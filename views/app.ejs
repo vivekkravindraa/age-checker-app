@@ -1,0 +1,434 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+
+<style>
+body,h1,h2,h3,h4,h5,h6,p,div,a,span,input,table,td,th { font-weight: 500; font-family: 'Roboto', sans-serif !important; }
+p,div,a,span,input,td { font-weight: 400; }
+.app-wrapper { overflow: hidden; }
+</style>
+
+<div class="top-bar navbar-default" oncontextmenu="return false;">
+    <div class="container" oncontextmenu="return false;">
+        <div class="row">
+            <div class="col-sm-6">
+                <ul class="list-inline">
+                    <li><i class="fas fa-envelope"></i><a>apps@kloctechnologies.com</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-6 text-right">
+                <ul class="list-inline">
+                    <li> <a href="#" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
+                    <li> <a href="#" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+                    <li> <a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li> <a href="#" target="_blank"><i class="fab fa-google-plus"></i></a></li>
+                    <li> <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar  topnav" role="navigation" oncontextmenu="return false;">
+    <div class="container topnav">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand topnav" href="#"><img src="https://s3.ap-south-1.amazonaws.com/referral-image-logo/logo.png" alt="" /></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="nav-item">
+                
+              </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<hr />
+
+<style>
+section{padding-bottom:50px;}
+a.navbar-brand.topnav {
+    height: auto;
+}
+.top-bar.navbar-default {
+    padding: 10px 0;
+}
+.top-bar.navbar-default ul.list-inline {
+    margin: 0;
+}
+.top-bar.navbar-default {
+    padding: 10px 0;
+    background: #2d2b75;
+    color: #fff;
+}
+.top-bar.navbar-default a {
+    color: #fff;
+}
+.top-bar.navbar-default a:hover {
+    background: none;
+    text-decoration: none;
+}
+a:hover {
+    background: none;
+    text-decoration: none;
+}
+nav.navbar.topnav {
+    margin: 0 !important;
+}
+nav.navbar.topnav + hr {
+    margin: 10px 0 0;
+}
+nav.navbar.topnav ul > li a.nav-link {
+    padding: 10px 20px;
+    color: #000;
+    margin: 10px 2px;
+}
+nav.navbar.topnav ul > li a.nav-link:hover {
+    background: #2b2b71;
+    color: #fff;
+}
+.container h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+.col-sm-12 > div > h5 {
+    font-size: 14px;
+    font-weight: 400;
+    background: #2b2b71;
+    padding: 12px;
+    color:#fff;
+    margin-bottom:0;
+}
+.col-sm-12 > div + div{
+    border: 1px solid #2b2b71;
+    padding: 15px;
+    margin-bottom:50px;
+    overflow-x: scroll;
+}
+table#country_list {
+    margin: 0;
+}
+form#discount_form {
+    padding: 25PX 20px;
+    border: 1px solid #ddd;
+}
+h3.form-heading {
+    padding: 15px 20px;
+    margin: 30px 0 0;
+    background: #2b2b71;
+    color: #fff;
+}
+.form-group > span:nth-last-child(1) {
+    color: red;
+    font-size: 12px;
+}
+.form-group.typeData {
+    position: relative;
+}
+.typeData span#typeData {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    display: none;
+    padding: 6px;
+    background: #ccc;
+    border-radius: 0 4px 3px 0;
+}
+#hide-table{display:none}
+.navbar-toggle span.icon-bar {
+    background: #2b2b71;
+}
+.tooltip.top .tooltip-inner {
+    background-color: black;
+  }
+.input-color {
+    position: relative;
+}
+.input-color input {
+    padding-left: 20px;
+}
+.input-color .color-box {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    background-color: #ccc;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+.table_shadow {
+    box-shadow: 0px 0px 40px 0px #0000004d;
+    margin: 30px 0 40px 0;
+}
+.table_shadow thead {
+    background: #2d2b75;
+    color: #fff;
+}
+.card_shadow {
+    box-shadow: 0px 0px 40px 0px #0000004d;
+    margin: 50px 0;
+    padding: 30px;
+    border-radius: 10px;
+}
+.card_panel_block {
+    box-shadow: 0px 0px 40px 0px #0000004d;
+    margin: 50px 0;
+    padding: 0px;
+    border-radius: 0px;
+}
+.card_head{
+    background: #2d2b75;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.card_panel_details {
+    padding: 10px;
+}
+.block_shadow {
+    box-shadow: 0px 0px 40px 0px #0000004d;
+    margin: 10px 0 30px 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+.block_shadow h2 {
+    margin: 0;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+.btn_block {
+    border-radius: 0;
+    margin: 10px 0;
+}
+a:hover, a:focus {
+    background: none;
+    text-decoration: none;
+    color: #b1d362;
+}
+.add_table_margin {
+  margin-top: 125px;
+  padding: 20px;
+}
+.btn-primary {
+    background-color: #2d2b75;
+    border-color: #2d2b75;
+}
+</style>
+
+<script>
+    $('document').ready(function(){
+        getAge();
+        function getAge() {
+            let url = 'https://4f527423.ngrok.io/shopify/getAge/<%= shop %>';
+            $.ajax(url,{
+                dataType: "json",
+                type: "GET",
+                error: function(response, status, xhr) {
+                    console.log(response);
+                },
+                success: function(data) {
+                    if(data) {
+                        $("#ageLimit").html(data.ageLimit);
+                    }
+                }
+            })
+        }
+
+        $("#update").click(function(e){
+            let shopDomain = e.target.value;
+            let age = e.target.previousElementSibling.value;
+            if(age.length > 0) {
+                let ajaxUrl = `https://4f527423.ngrok.io/shopify/setAge/${shopDomain}?age=${age}`;
+                $.ajax(ajaxUrl,{
+                    dataType: "json",
+                    type: "GET",
+                    error: function(response, status, xhr) {
+                        console.log(response);
+                    },
+                    success: function(data) {
+                        if (data) {
+                            getAge();
+                            $("#age")[0].value = '';
+                            $("#message").html(data.message);
+                            $("#bsModal3").modal('show');
+                            $("#myModalBody").html(data.message);
+                        }
+                    }
+                })
+            } else {
+                $("#bsModal3").modal('show');
+                $("#message").html('Please enter an age value in the field.');
+                $("#myModalBody").html('Please enter an age value in the field.');
+            }
+        })
+    })
+</script>
+
+<div class="row shadow-box" id="shadow-box">
+    <h3>Welcome to <%= shop.toUpperCase() %></h3>
+    <label>Current Age Limit: <span id="ageLimit"></span></label>
+    <hr />
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="age">Set Age:</label>
+            <input
+                class="form-control"
+                id="age"
+                name="age"
+                type="number"
+                min="0"
+                max="100"
+                placeholder="Enter an age.."
+                value=""
+            />
+            <button
+                class="btn btn-primary"
+                id="update"
+                type="submit"
+                value="<%= shop %>"
+            >
+                Update Age
+            </button>
+        </div>
+        <span id="message"></span>
+    </div>
+    <div class="modal fade" id="bsModal3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+            <div class="modal-header">
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+                <h4 class="modal-title" id="mySmallModalLabel">Note:</h4>
+            </div>
+            <div class="modal-body" id="myModalBody"></div>
+            <div class="modal-footer">
+                <button type="button" id="myModalClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+<h4>Instructions:</h4>
+<li>Once you have installed the application in your store, you should add the following JavaScript code in the respective liquid files under the <b>Templates</b> folder as specified below.</li>
+<h4><i class='fas fa-file-alt'></i> CDNs :</h4>
+<pre>
+<code style="font-family:Courier New">
+<b>&lt;!-- Add the below CDNs on top of 'customers/register.liquid' file: --&gt;</b>
+
+&lt;script src="https://unpkg.com/axios/dist/axios.min.js"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+</code>
+</pre>
+<h4><i class='fas fa-file-alt'></i> customers/register.liquid :</h4>
+<pre>
+<code style="font-family:Courier New">
+<b>&lt;!-- Add the below html code in liquid section: --&gt;</b>
+
+&lt;label for="birthDate"&gt;Select DOB&lt;/label&gt;
+&lt;input type="date" id="birthDate" /&gt;
+&lt;button id="age" style="background-color:grey;color:white"&gt;
+&lt;i id="icon"&gt;&lt;/i&gt; Check Age &lt;/button&gt;
+&lt;span id="message"&gt;&lt;/span&gt;
+
+<b>&lt;!-- Modify the below liquid code by adding an id to the input field: --&gt;</b>
+
+&lt;p class="text-center"&gt;
+&lt;input <b style="background-color: yellow">id="createButton"</b> type="submit" value="{{ 'customer.register.submit' | t }}" class="btn"&gt;
+&lt;/p&gt;
+
+<b>&lt;!-- Add the below JavaScript code after the liquid code: --&gt;</b>
+
+&lt;script&gt;
+let birthDateValue;
+let shopDomain = Shopify.shop;
+
+let birthDateInputHandle = document.getElementById('birthDate');
+let checkAgeButtonHandle = document.getElementById('age');
+let createButtonHandle = document.getElementById('createButton');
+let buttonIconHandle = document.getElementById('icon');
+let messageSpanHandle = document.getElementById('message');
+
+createButtonHandle.disabled = true;
+
+birthDateInputHandle.addEventListener('change',function(e) {
+    birthDateValue = e.target.value;
+    messageSpanHandle.innerText = '';
+    createButtonHandle.disabled = true;
+},false);
+
+checkAgeButtonHandle.addEventListener('click',function(e) {
+    e.preventDefault();
+            
+    if(birthDateValue !== undefined) {
+        buttonIconHandle.setAttribute('class','fa fa-spinner fa-spin');
+        let url = 'https://4f527423.ngrok.io/customers/ageVerifier?shopDomain='+shopDomain+'&userAge='+birthDateValue;
+
+        axios
+            .get(url)
+            .then((response) => {
+                setTimeout(function() {
+                    buttonIconHandle.setAttribute('class','');
+
+                    let isVerified = response.data.isVerified;
+                    let message = response.data.message;
+
+                    if(isVerified) {
+                    messageSpanHandle.innerText = message;
+                    messageSpanHandle.style.color = 'green';
+                    createButtonHandle.disabled = false;
+                    } else {
+                    messageSpanHandle.innerText = message;
+                    messageSpanHandle.style.color = 'red';
+                    createButtonHandle.disabled = true;
+                    }    
+                },3000);
+            })
+        .catch((error) => { console.log(error) });
+    } else {
+        messageSpanHandle.innerText = 'You should select a date first.';
+        messageSpanHandle.style.color = 'orange';
+    }
+},false);
+&lt;/script&gt;
+</code>
+</pre>
+<h4><i class='fas fa-file-alt'></i> collection.liquid :</h4>
+<pre>
+<code style="font-family:Courier New">
+<b>&lt;!-- Add the below JavaScript code after the liquid code: --&gt;</b>
+
+&lt;script&gt;
+let customerId = ShopifyAnalytics.meta.page.customerId;
+
+window.addEventListener('load',function(e){    
+    if(customerId === undefined) {
+        window.alert('You must log in to view the products.');
+        window.location.href = 'https://'+Shopify.shop+'/account';
+    }
+},false);
+&lt;/script&gt;
+</code>
+</pre>
+</div>
+</div>
+
+<style>
+    #shadow-box {
+        padding: 30px;
+        margin: 30px;
+        background-color: #b1d362;
+        border-radius: 10px;
+        box-shadow: 0px 0px 25px 0px #0000009e;
+    }
+</style>
