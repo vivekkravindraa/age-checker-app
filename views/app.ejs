@@ -255,7 +255,7 @@ a:hover, a:focus {
                 $("#message").html('Please enter an age in the field.');
                 $("#bsModal3").modal('show');
                 $("#myModalBody").html('Please enter an age in the field.');
-            } else if(age < 0 || (age % 1 !== 0)){
+            } else if(age < 0 || (age % 1 !== 0) || age > 100){
                 $("#message").html('Invalid! Age should be between 0 and 100.');
                 $("#bsModal3").modal('show');
                 $("#myModalBody").html('Invalid! Age should be between 0 to 100.');
@@ -287,32 +287,38 @@ a:hover, a:focus {
     <h3>Welcome to <%= shop.toUpperCase() %></h3>
     <label>Current Age Limit: <span id="ageLimit"></span></label>
     <hr />
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="age">Set Age:</label>
-            <input
-                class="form-control"
-                id="age"
-                name="age"
-                type="number"
-                min="0"
-                max="100"
-                placeholder="Enter an age.."
-                value=""
-            />
+    <div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="age">Set Age:</span>
+                </label>
+                <input
+                    class="form-control"
+                    id="age"
+                    name="age"
+                    type="number"
+                    min="0"
+                    max="100"
+                    placeholder="Enter an age.."
+                    value=""
+                />
+            </div>
+            <div class="col-md-4" style="padding-top:32px;padding-left:0px">
+                <span id="message"></span>
+            </div>
         </div>
-        <div>
-            <button
-                class="btn btn-primary"
-                id="update"
-                type="submit"
-                value="<%= shop %>"
-            >
-                Update Age
-            </button>
-        </div>
-        <div>
-            <span id="message"></span>
+        <div class="row">
+            <div class="col-md-4">
+                <button
+                    style="margin-top: 8px; width:100%"
+                    class="btn btn-primary"
+                    id="update"
+                    type="submit"
+                    value="<%= shop %>"
+                >
+                    Update Age
+                </button>
+            </div>
         </div>
     </div>
     <div class="modal fade" id="bsModal3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -329,9 +335,9 @@ a:hover, a:focus {
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+<div>
 <h4>Instructions:</h4>
-<li>Once you have installed the application in your store, you should add the following JavaScript code in the respective liquid files under the <b>Templates</b> folder as specified below.</li>
+<p>Once you have installed the application in your store, you should add the following JavaScript code in the respective liquid files under the <b>Templates</b> folder as specified below.</p>
 <h4><i class='fas fa-file-alt'></i> CDNs :</h4>
 <pre>
 <code style="font-family:Courier New">
@@ -361,56 +367,77 @@ a:hover, a:focus {
 <b>&lt;!-- Add the below JavaScript code after the liquid code: --&gt;</b>
 
 &lt;script&gt;
-let birthDateValue;
-let shopDomain = Shopify.shop;
-
-let birthDateInputHandle = document.getElementById('birthDate');
-let checkAgeButtonHandle = document.getElementById('age');
-let createButtonHandle = document.getElementById('createButton');
-let buttonIconHandle = document.getElementById('icon');
-let messageSpanHandle = document.getElementById('message');
-
-createButtonHandle.disabled = true;
-
-birthDateInputHandle.addEventListener('change',function(e) {
-    birthDateValue = e.target.value;
-    messageSpanHandle.innerText = '';
+    let birthDateValue;
+    let shopDomain = Shopify.shop;
+    
+    let birthDateInputHandle = document.getElementById('birthDate');
+    let checkAgeButtonHandle = document.getElementById('age');
+    let createButtonHandle = document.getElementById('createButton');
+    let buttonIconHandle = document.getElementById('icon');
+    let messageSpanHandle = document.getElementById('message');
+    
+    let today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; 
+    var yyyy = today.getFullYear();
+    if(dd<10) 
+    {
+        dd='0'+dd;
+    } 
+  
+    if(mm<10) 
+    {
+        mm='0'+mm;
+    } 
+    today = yyyy+'-'+mm+'-'+dd;
+    
+    birthDateInputHandle.setAttribute('max',today);
     createButtonHandle.disabled = true;
-},false);
-
-checkAgeButtonHandle.addEventListener('click',function(e) {
-    e.preventDefault();
-            
-    if(birthDateValue !== undefined) {
+    
+    birthDateInputHandle.addEventListener('change',function(e) {
+      birthDateValue = e.target.value;
+      messageSpanHandle.innerText = '';
+      createButtonHandle.disabled = true;
+    },false);
+    
+    checkAgeButtonHandle.addEventListener('click',function(e) {
+      e.preventDefault();
+              
+      if(birthDateValue !== undefined) {
+  
         buttonIconHandle.setAttribute('class','fa fa-spinner fa-spin');
+        
         let url = 'https://4f527423.ngrok.io/customers/ageVerifier?shopDomain='+shopDomain+'&userAge='+birthDateValue;
-
+  
         axios
-            .get(url)
-            .then((response) => {
-                setTimeout(function() {
-                    buttonIconHandle.setAttribute('class','');
-
-                    let isVerified = response.data.isVerified;
-                    let message = response.data.message;
-
-                    if(isVerified) {
-                    messageSpanHandle.innerText = message;
-                    messageSpanHandle.style.color = 'green';
-                    createButtonHandle.disabled = false;
-                    } else {
-                    messageSpanHandle.innerText = message;
-                    messageSpanHandle.style.color = 'red';
-                    createButtonHandle.disabled = true;
-                    }    
-                },3000);
-            })
-        .catch((error) => { console.log(error) });
-    } else {
-        messageSpanHandle.innerText = 'You should select a date first.';
-        messageSpanHandle.style.color = 'orange';
-    }
-},false);
+          .get(url)
+          .then((response) => {
+            console.log("RESPONSE.DATA", response.data);
+  
+            setTimeout(function() {
+              buttonIconHandle.setAttribute('class','');
+  
+              let isVerified = response.data.isVerified;
+              let message = response.data.message;
+  
+              if(isVerified) {
+                messageSpanHandle.innerText = message;
+                messageSpanHandle.style.color = 'green';
+                createButtonHandle.disabled = false;
+              } else {
+                messageSpanHandle.innerText = message;
+                messageSpanHandle.style.color = 'red';
+                createButtonHandle.disabled = true;
+              }    
+            },3000);
+  
+          })
+          .catch((error) => { console.log(error) });
+      } else {
+          messageSpanHandle.innerText = 'You should select a date first.';
+          messageSpanHandle.style.color = 'orange';
+      }
+    },false);
 &lt;/script&gt;
 </code>
 </pre>
@@ -420,14 +447,14 @@ checkAgeButtonHandle.addEventListener('click',function(e) {
 <b>&lt;!-- Add the below JavaScript code after the liquid code: --&gt;</b>
 
 &lt;script&gt;
-let customerId = ShopifyAnalytics.meta.page.customerId;
+    let customerId = ShopifyAnalytics.meta.page.customerId;
 
-window.addEventListener('load',function(e){    
-    if(customerId === undefined) {
-        window.alert('You must log in to view the products.');
-        window.location.href = 'https://'+Shopify.shop+'/account';
-    }
-},false);
+    window.addEventListener('load',function(e){    
+        if(customerId === undefined) {
+            window.alert('You must log in to view the products.');
+            window.location.href = 'https://'+Shopify.shop+'/account';
+        }
+    },false);
 &lt;/script&gt;
 </code>
 </pre>
