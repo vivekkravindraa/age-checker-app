@@ -246,11 +246,20 @@ a:hover, a:focus {
             })
         }
 
+        let age;
+        $("#age").change(function(e) { age = e.target.value; })
+
         $("#update").click(function(e){
             let shopDomain = e.target.value;
-            let input = e.target.previousElementSibling.value;
-            let age = parseInt(`${input}`);
-            if(age >= 0) {
+            if(!age) {
+                $("#message").html('Please enter an age in the field.');
+                $("#bsModal3").modal('show');
+                $("#myModalBody").html('Please enter an age in the field.');
+            } else if(age < 0 || (age % 1 !== 0)){
+                $("#message").html('Invalid! Age should be between 0 and 100.');
+                $("#bsModal3").modal('show');
+                $("#myModalBody").html('Invalid! Age should be between 0 to 100.');
+            } else if(age >= 0) {
                 let ajaxUrl = `https://4f527423.ngrok.io/shopify/setAge/${shopDomain}?age=${age}`;
                 $.ajax(ajaxUrl,{
                     dataType: "json",
@@ -261,6 +270,7 @@ a:hover, a:focus {
                     success: function(data) {
                         if (data) {
                             getAge();
+                            age = '';
                             $("#age")[0].value = '';
                             $("#message").html(data.message);
                             $("#bsModal3").modal('show');
@@ -268,10 +278,6 @@ a:hover, a:focus {
                         }
                     }
                 })
-            } else {
-                $("#bsModal3").modal('show');
-                $("#message").html('Please enter a valid age in the field.');
-                $("#myModalBody").html('Please enter a valid age in the field.');
             }
         })
     })
@@ -294,6 +300,8 @@ a:hover, a:focus {
                 placeholder="Enter an age.."
                 value=""
             />
+        </div>
+        <div>
             <button
                 class="btn btn-primary"
                 id="update"
@@ -303,7 +311,9 @@ a:hover, a:focus {
                 Update Age
             </button>
         </div>
-        <span id="message"></span>
+        <div>
+            <span id="message"></span>
+        </div>
     </div>
     <div class="modal fade" id="bsModal3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
