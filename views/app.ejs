@@ -252,11 +252,11 @@ a:hover, a:focus {
         $("#update").click(function(e){
             let shopDomain = e.target.value;
             if(!age) {
-                $("#message").html('Please enter an age in the field.');
+                $("#message").html('<p><i class="fa fa-chevron-circle-left" style="color:red"></i> Please enter an age in the field.</p>');
                 $("#bsModal3").modal('show');
                 $("#myModalBody").html('Please enter an age in the field.');
             } else if(age < 0 || (age % 1 !== 0) || age > 100){
-                $("#message").html('Invalid! Age should be between 0 and 100.');
+                $("#message").html('<p><i class="fa fa-chevron-circle-left" style="color:red"></i> Invalid! Age should be between 0 to 100.</p>');
                 $("#bsModal3").modal('show');
                 $("#myModalBody").html('Invalid! Age should be between 0 to 100.');
             } else if(age >= 0) {
@@ -272,7 +272,7 @@ a:hover, a:focus {
                             getAge();
                             age = '';
                             $("#age")[0].value = '';
-                            $("#message").html(data.message);
+                            $("#message").html(`<p><span>&#10004;</span> ${data.message}<p>`);
                             $("#bsModal3").modal('show');
                             $("#myModalBody").html(data.message);
                         }
@@ -380,15 +380,8 @@ a:hover, a:focus {
     var dd = today.getDate();
     var mm = today.getMonth()+1; 
     var yyyy = today.getFullYear();
-    if(dd<10) 
-    {
-        dd='0'+dd;
-    } 
-  
-    if(mm<10) 
-    {
-        mm='0'+mm;
-    } 
+    if(dd<10) { dd='0'+dd; }
+    if(mm<10) { mm='0'+mm; }
     today = yyyy+'-'+mm+'-'+dd;
     
     birthDateInputHandle.setAttribute('max',today);
