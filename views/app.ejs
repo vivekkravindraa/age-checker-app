@@ -248,8 +248,9 @@ a:hover, a:focus {
 
         $("#update").click(function(e){
             let shopDomain = e.target.value;
-            let age = e.target.previousElementSibling.value;
-            if(age.length > 0) {
+            let input = e.target.previousElementSibling.value;
+            let age = parseInt(`${input}`);
+            if(age >= 0) {
                 let ajaxUrl = `https://4f527423.ngrok.io/shopify/setAge/${shopDomain}?age=${age}`;
                 $.ajax(ajaxUrl,{
                     dataType: "json",
@@ -269,8 +270,8 @@ a:hover, a:focus {
                 })
             } else {
                 $("#bsModal3").modal('show');
-                $("#message").html('Please enter an age value in the field.');
-                $("#myModalBody").html('Please enter an age value in the field.');
+                $("#message").html('Please enter a valid age in the field.');
+                $("#myModalBody").html('Please enter a valid age in the field.');
             }
         })
     })
