@@ -141,8 +141,8 @@ router.get('/callback', (req, res) => {
     }
 });
 
-router.get('/setAge/:shopDomain', (req, res) => {
-    let shopDomain = req.params.shopDomain;
+router.get('/setAge', (req, res) => {
+    let shopDomain = req.query.shopDomain;
     let age = req.query.age;
 
     if(age) {
@@ -160,8 +160,8 @@ router.get('/setAge/:shopDomain', (req, res) => {
     }
 })
 
-router.get('/getAge/:shopDomain', (req,res) => {
-    let shopDomain = req.params.shopDomain;
+router.get('/getAge', (req,res) => {
+    let shopDomain = req.query.shopDomain;
 
     Shopify.findOne({ shopDomain })
     .then((shop) => {
