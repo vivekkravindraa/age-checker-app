@@ -231,7 +231,7 @@ a:hover, a:focus {
     $('document').ready(function(){
         getAge();
         function getAge() {
-            let url = 'https://fb1e62aa.ngrok.io/shopify/getAge?shopDomain=<%= shop %>';
+            let url = 'https://06d9a06a.ngrok.io/shopify/getAge?shopDomain=<%= shop %>';
             $.ajax(url,{
                 dataType: "json",
                 type: "GET",
@@ -260,7 +260,7 @@ a:hover, a:focus {
                 $("#bsModal3").modal('show');
                 $("#myModalBody").html('Invalid! Age should be between 0 to 100.');
             } else if(age >= 0) {
-                let ajaxUrl = `https://fb1e62aa.ngrok.io/shopify/setAge?shopDomain=${shopDomain}&age=${age}`;
+                let ajaxUrl = `https://06d9a06a.ngrok.io/shopify/setAge?shopDomain=${shopDomain}&age=${age}`;
                 $.ajax(ajaxUrl,{
                     dataType: "json",
                     type: "GET",
@@ -400,7 +400,7 @@ a:hover, a:focus {
   
         buttonIconHandle.setAttribute('class','fa fa-spinner fa-spin');
         
-        let url = 'https://fb1e62aa.ngrok.io/customers/ageVerifier?shopDomain='+shopDomain+'&userAge='+birthDateValue;
+        let url = 'https://06d9a06a.ngrok.io/customers/ageVerifier?shopDomain='+shopDomain+'&userAge='+birthDateValue;
   
         axios
           .get(url)
