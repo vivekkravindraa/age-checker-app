@@ -10,8 +10,10 @@ const request = require('request-promise');
 
 const apiKey = process.env.SHOPIFY_API_KEY;
 const apiSecret = process.env.SHOPIFY_API_SECRET;
+const tunnelUrl = process.env.TUNNEL_URL;
+const apiVersion = process.env.API_VERSION;
 const scopes = 'read_products';
-const forwardingAddress = "https://4f527423.ngrok.io";
+const forwardingAddress = "https://fb1e62aa.ngrok.io";
 
 const { Shopify } = require('../models/Shopify');
 
@@ -123,8 +125,7 @@ router.get('/callback', (req, res) => {
                             // res.status(200).redirect(`${process.env.REACT_URL}`)
                             res.render('app', {
                                 title: 'Shopify Node App',
-                                shop: shop,
-                                success: ''
+                                shop: shop
                             });
                         }
                     })
