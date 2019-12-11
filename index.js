@@ -6,7 +6,7 @@ const { mongoose } = require('./config/db');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = 8080;
 
 const corsOptions = { exposedHeaders: 'x-auth' };
 app.use(cors());
